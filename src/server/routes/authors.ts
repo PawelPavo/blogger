@@ -19,7 +19,7 @@ router.get('/', async(req,res) => {
 router.get('/:id', async (req,res) =>{
     const id = req.params.id;
     try {
-        const [author] = await db.authors.one(id)
+        const author = await db.authors.one(id)
         res.json(author)
     } catch (error) {
         res.status(500).json({error: 'Sorry we found an error with GET ONE author!'})
@@ -59,7 +59,7 @@ router.delete('/:id', async (req, res)=>{
     const id = Number(req.params.id);
     try {
         const result = await db.authors.destory(id)
-        res.status(200).json({msg: 'Author Deleted', result})
+        res.status(200).json({msg: 'Author Deleted'})
     } catch (error) {
         console.log(error)
         res.status(500).json({error: 'Sorry we found an error with your author DELETE request!'})

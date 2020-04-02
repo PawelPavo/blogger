@@ -56,7 +56,6 @@ router.put('/:id', async(req,res) =>{
 });
 
 // DELETE api/blogs/:id
-
 router.delete('/:id', async(req, res) =>{
     const id = Number(req.params.id);
     try {

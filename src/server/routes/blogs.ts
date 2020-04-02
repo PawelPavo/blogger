@@ -15,4 +15,16 @@ router.get('/', async(req,res) => {
     }
 })
 
+//GET api/blogs/:id
+
+router.get('/:id', async (req,res) =>{
+    const id = req.params.id;
+    try {
+        const [blog] = await db.blogs.one(id)
+        res.json(blog)
+    } catch (error) {
+        res.status(500).json({error: 'Sorry we found an error with GET ONE blog!'})
+    }
+})
+
 export default router;

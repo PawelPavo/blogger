@@ -6,6 +6,6 @@ import authorRouter from './authors';
 const router = Router()
 
 router.use('/blogs', blogsRouter)
-router.use('/author', authorRouter)
+router.use('/authors', authorRouter)
 
 export default router;

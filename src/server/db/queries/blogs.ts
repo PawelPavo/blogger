@@ -11,6 +11,9 @@ interface BlogsT {
 
 const all = () => Query<BlogsT[]>('SELECT * FROM blogs')
 
+const one = (id: string) => Query<BlogsT[]>('SELECT * FROM blogs WHERE id = ?', [id])
+
 export default {
-    all
+    all,
+    one,
 }

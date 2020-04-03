@@ -1,5 +1,5 @@
 import { Router, json } from 'express';
-// import { chirpBody } from '../middleware/chirps'
+import logger from '../utils/logger';
 import db from '../db';
 import { blogBody } from '../middleware/blogs';
 
@@ -10,6 +10,7 @@ router.get('/', async(req,res) => {
     try {
         const blogs = await db.blogs.all();
         res.json(blogs);
+        logger.info
     } catch (error) {
         console.log(error);
         res.status(500).json({error: 'Sorry we found an error with GET ALL blogs!'});
@@ -30,7 +31,6 @@ router.get('/:id', async (req,res) =>{
 //POST api/blogs
 router.post('/', blogBody, async(req, res) => {
     const blog = req.body;
-
     try {
         const {insertId} = await db.blogs.insert(blog.title, blog.content, blog.authorid);
         res.status(201).json({insertId, msg: 'Blog Inserted'});

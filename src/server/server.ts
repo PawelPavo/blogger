@@ -2,7 +2,11 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as cors from 'cors';
 import * as path from 'path';
+import logger, {morganStream} from './utils/logger';
+import config from './config';
 import apiRouter from './routes';
+
+
 
 const app = express();
 
@@ -11,7 +15,7 @@ app.head('/status',(req, res) => res.status(200).end)
 
 app.use(cors());
 app.use(express.static('public'));
-app.use(morgan('dev'));
+app.use(morgan('dev', {stream: morganStream}));
 app.use(express.json());
 app.use('/api', apiRouter);
 app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction)=> {
@@ -20,8 +24,7 @@ app.use((error: Error, req: express.Request, res: express.Response, next: expres
 })
 app.get('*', (req,res) => res.sendFile(path.join(__dirname, '../public/index.html')))
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+app.listen(config.port, () => logger.info(`✌️ Server listening on port: ${config.port} ✌️`));
 
 
 type Error = {

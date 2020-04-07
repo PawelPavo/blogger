@@ -28,7 +28,7 @@ const LoggerInstance = winston.createLogger({
     transports
 });
 
-export const morganStream = {
+export const stream = {
     write: (text: string) => {
         LoggerInstance.http(text);
     }

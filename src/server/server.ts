@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as cors from 'cors';
 import * as path from 'path';
-import logger, {morganStream} from './utils/logger';
+import logger, {stream} from './utils/logger';
 import config from './config';
 import apiRouter from './routes';
 
@@ -15,12 +15,15 @@ app.head('/status',(req, res) => res.status(200).end)
 
 app.use(cors());
 app.use(express.static('public'));
-app.use(morgan('dev', {stream: morganStream}));
+app.use(morgan('dev', {stream}));
+//use "combined" to log more info, such as OS, time stamp, etc
+// app.use(morgan('combined', {stream}));
 app.use(express.json());
 app.use('/api', apiRouter);
-app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction)=> {
+app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    logger.error(error);
     res.status(error.status || 500);
-    res.json({err: error.messgae})
+    res.json({err: error.message})
 })
 app.get('*', (req,res) => res.sendFile(path.join(__dirname, '../public/index.html')))
 
@@ -29,5 +32,5 @@ app.listen(config.port, () => logger.info(`✌️ Server listening on port: ${co
 
 type Error = {
     status?: number;
-    messgae?: string;
+    message?: string;
 }

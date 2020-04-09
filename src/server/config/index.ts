@@ -14,6 +14,7 @@ export default {
         database: process.env.DB_SCHEMA
     },
     logs: {
-        level: process.env.LOG_LEVEL
+        level: process.env.LOG_LEVEL,
+        morgan: process.env.MORGAB
     }
 };

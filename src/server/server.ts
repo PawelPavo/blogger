@@ -10,14 +10,12 @@ import apiRouter from './routes';
 
 const app = express();
 
-app.get('/status', (req, res) => res.status(200).end)
-app.head('/status',(req, res) => res.status(200).end)
+app.get('/status', (req, res) => res.status(200).end())
+app.head('/status',(req, res) => res.status(200).end())
 
 app.use(cors());
 app.use(express.static('public'));
-app.use(morgan('dev', {stream}));
-//use "combined" to log more info, such as OS, time stamp, etc
-// app.use(morgan('combined', {stream}));
+app.use(morgan(config.logs.morgan, {stream}));
 app.use(express.json());
 app.use('/api', apiRouter);
 app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -26,7 +24,6 @@ app.use((error: Error, req: express.Request, res: express.Response, next: expres
     res.json({err: error.message})
 })
 app.get('*', (req,res) => res.sendFile(path.join(__dirname, '../public/index.html')))
-
 app.listen(config.port, () => logger.info(`✌️ Server listening on port: ${config.port} ✌️`));
 
 

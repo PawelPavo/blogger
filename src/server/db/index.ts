@@ -25,8 +25,12 @@ export const Query = <T = any> (query: string, values?: Array<any>) =>{
 
 import blogs from '././queries/blogs';
 import authors from './queries/authors';
+import tags from './queries/tags'
+import blogTags from './queries/blogTags'
 
 export default {
     blogs,
-    authors
+    authors,
+    tags,
+    blogTags
 }

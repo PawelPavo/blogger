@@ -36,6 +36,7 @@ router.post('/', blogBody, async(req, res, next) => {
     try {
         logger.silly('Posting a Blog');
         const {insertId} = await db.blogs.insert(blog.title, blog.content, blog.authorid);
+        await db.blogTags.insert(insertId, blog.tagid)
         res.status(201).json({insertId, msg: 'Blog Inserted'});
     } catch (error) {
         logger.warn('Posting a blog failed');
@@ -71,6 +72,5 @@ router.delete('/:id', async(req, res, next) =>{
         next(error);     
     };
 });
-
 
 export default router;

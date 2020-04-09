@@ -1,15 +1,16 @@
 import {Query} from '../index';
+import type {BlogsT} from '../models'
 
-interface BlogsT {
-    id: number;
-    title: string;
-    content: string;
-    image_url: string;
-    authorid: number;
-    created_at: Date;
-}
 
-const all = () => Query<BlogsT[]>('SELECT blogs.*, authors.name FROM blogs JOIN authors ON authors.id = blogs.authorid ORDER BY created_at DESC')
+const all = () => Query<BlogsT[]>(`SELECT 
+blogs.*, authors.name, tags.name as tag_name
+FROM
+blogs
+    JOIN
+authors ON authors.id = blogs.authorid
+LEFT JOIN blogTags ON blogTags.blogid = blogs.id
+LEFT JOIN tags ON tags.id = blogTags.tagid
+ORDER BY blogs.created_at DESC`)
 
 const one = (id: string) => Query<BlogsT[]>('SELECT blogs.*, authors.name FROM blogs JOIN authors ON authors.id = blogs.authorid WHERE blogs.id = ?', [id])
 

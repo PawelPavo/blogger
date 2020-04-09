@@ -12,7 +12,15 @@ LEFT JOIN blogTags ON blogTags.blogid = blogs.id
 LEFT JOIN tags ON tags.id = blogTags.tagid
 ORDER BY blogs.created_at DESC`)
 
-const one = (id: string) => Query<BlogsT[]>('SELECT blogs.*, authors.name FROM blogs JOIN authors ON authors.id = blogs.authorid WHERE blogs.id = ?', [id])
+const one = (id: string) => Query<BlogsT[]>(`SELECT 
+blogs.*, authors.name, tags.name as tag_name
+FROM
+blogs
+    JOIN
+authors ON authors.id = blogs.authorid
+LEFT JOIN blogTags ON blogTags.blogid = blogs.id
+LEFT JOIN tags ON tags.id = blogTags.tagid WHERE blogs.id = ?
+ORDER BY blogs.created_at DESC `, [id])
 
 const insert = (title:string, content:string, authorid:number) => Query('INSERT INTO blogs (title, content, authorid) VALUES (?)',[[title, content, authorid]])
 

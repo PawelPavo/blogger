@@ -7,7 +7,7 @@ const BlogCard: React.SFC<BlogCardProps> = props => {
 
     return (
         <>
-            <div className="col-4">
+            <div className="col-md-4">
                 <div className="card mt-5 shadow">
                     {props.blog.image_url &&<img src={props.blog.image_url} className="card-img-top" alt="..." />}
                     <h4 className="card-header text-center text-primary"> {props.blog.title}</h4>

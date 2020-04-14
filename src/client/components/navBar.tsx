@@ -15,7 +15,6 @@ const Navbar: React.SFC<NavbarProps> = () => {
                 <Link className="btn btn-primary m-3" to="/new"><FaFeather /> New Blog</Link>
                 <Link className="btn btn-outline-primary m-3" to="/"> All Blogs</Link>
                 <Link className="btn btn-danger m-3" to="/admin" >Admin</Link>
-
             </div>
         </ul>
 

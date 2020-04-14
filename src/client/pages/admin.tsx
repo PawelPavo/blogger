@@ -34,6 +34,7 @@ const Admin: React.FC<AdminProps> = () => {
             console.log(error)
         }
     }
+    
     return (
         <section className="row justify-content-center my-4">
             <article className="col-md-8">

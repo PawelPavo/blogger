@@ -17,7 +17,6 @@ router.get('/', async(req,res, next) => {
     };
 });
 
-
 //POST api/blogs
 router.post('/', blogTagBody, async(req, res, next) => {
     const blogTags = req.body;

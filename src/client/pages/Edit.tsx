@@ -48,7 +48,7 @@ const Edit: React.SFC<EditProps> = props => {
             await fetch(`/api/blogs/${blogid}`, {
                 method: 'PUT',
                 headers: { "Content-type": "application/json" },
-                body: JSON.stringify({title, content})
+                body: JSON.stringify({ title, content })
             });
         } catch (error) {
             console.log(error);
@@ -74,12 +74,12 @@ const Edit: React.SFC<EditProps> = props => {
                         ))}
                     </select> */}
                     <div className="form-group mt-5">
-                        <textarea className="form-control" placeholder="Enter your blog ..."
+                        <textarea className="form-control" rows={8} placeholder="Enter your blog ..."
                             value={content}
                             onChange={e => setContent(e.target.value)}
-
                         ></textarea>
                     </div>
+                    <small className="text-muted">*Markdown is supported</small>
                     <button onClick={handleClick} type="button" className="btn btn-outline-primary btn-lg btn-block mt-5">Submit Changes</button>
                 </form>
             </div>

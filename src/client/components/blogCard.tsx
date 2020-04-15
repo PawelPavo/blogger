@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IBlogs } from '../utils/interfaces'
-import { Link } from 'react-router-dom'
-import {FaEdit, } from 'react-icons/fa'
+import { IBlogs } from '../utils/interfaces';
+import { Link } from 'react-router-dom';
+import {FaEdit, } from 'react-icons/fa';
 
 const BlogCard: React.SFC<BlogCardProps> = props => {
 

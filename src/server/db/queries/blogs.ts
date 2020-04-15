@@ -22,7 +22,7 @@ LEFT JOIN blogTags ON blogTags.blogid = blogs.id
 LEFT JOIN tags ON tags.id = blogTags.tagid WHERE blogs.id = ?
 ORDER BY blogs.created_at DESC `, [id])
 
-const insert = (title:string, content:string, authorid:number) => Query('INSERT INTO blogs (title, content, authorid) VALUES (?)',[[title, content, authorid]])
+const insert = (title:string, content:string, authorid:number, image: string) => Query('INSERT INTO blogs (title, content, authorid, image_url) VALUES (?)',[[title, content, authorid, image]])
 
 const update = (title: string, content: string, id:number) => Query('UPDATE blogs SET title = ?, content = ? WHERE id = ?', [title, content, id])
 

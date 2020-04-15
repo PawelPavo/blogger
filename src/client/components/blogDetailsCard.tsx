@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as moment from 'moment';
 import { Link } from 'react-router-dom';
 import { IBlogs } from '../utils/interfaces';
+import ReactMarkdown from 'react-markdown';;
+
 
 export interface BlogDetailsCardProps {
     blogs: IBlogs,
@@ -24,7 +26,7 @@ const BlogDetailsCard: React.SFC<BlogDetailsCardProps> = ({ blogs }) => {
                         </div>
                     </div>
                     <div className="card-body">
-                        <p>{blogs.content}</p>
+                        <ReactMarkdown source={blogs.content} />
                         <p className="text-muted text-center ">{moment(blogs.created_at).format('MMM Do YYYY')}</p>
                         <p className="text-monospace badge badge-pill badge-success shadow" >{blogs.tag_name}</p>
                         <div className="d-flex justify-content-end">

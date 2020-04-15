@@ -35,7 +35,7 @@ router.post('/', blogBody, async(req, res, next) => {
     const blog = req.body;
     try {
         logger.silly('Posting a Blog');
-        const {insertId} = await db.blogs.insert(blog.title, blog.content, blog.authorid);
+        const {insertId} = await db.blogs.insert(blog.title, blog.content, blog.authorid, blog.image_url);
         await db.blogTags.insert(insertId, blog.tagid)
         res.status(201).json({insertId, msg: 'Blog Inserted'});
     } catch (error) {

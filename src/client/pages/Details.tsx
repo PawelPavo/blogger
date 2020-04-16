@@ -26,7 +26,6 @@ const Details: React.SFC<DetailsProps> = props => {
             try {
                 let res = await fetch(`/api/blogs/${blogid}`);
                 let blog = await res.json()
-                console.log(res)
                 setBlog(blog)
             } catch (error) {
                 console.log({ error: 'This is shit' })

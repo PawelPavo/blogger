@@ -11,30 +11,32 @@ export interface BlogDetailsCardProps {
 
 const BlogDetailsCard: React.SFC<BlogDetailsCardProps> = ({ blogs }) => {
     return (
-        <div className="row justify-content-md-center">
-            <div className="col-md-8">
-                <div className="card shadow">
-                    <div className="card-header text-center">
-                        <div className="row">
-                            <div className="col-2">
-                                {blogs.image_url && <img src={blogs.image_url} className="img-thumbnail" width="100" height="100" />}
-                            </div>
-                            <div className="col-8">
-                                <h4 className="mt-3">{blogs.title}</h4>
-                                <h6 className="card-title text-center text-muted mt-2">Written by: {blogs.name}</h6>
-                            </div>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col">
+                    <div className="card shadow">
+                        <div className="card-header text-center">
+                            <h4 className="mt-3">{blogs.title}</h4>
+                            <h6 className="card-title text-muted mt-2">Written by: {blogs.name}</h6>
                         </div>
-                    </div>
-                    <div className="card-body">
-                        <ReactMarkdown source={blogs.content} />
-                        <p className="text-muted text-center ">{moment(blogs.created_at).format('MMM Do YYYY')}</p>
-                        <p className="text-monospace badge badge-pill badge-success shadow" >{blogs.tag_name}</p>
-                        <div className="d-flex justify-content-end">
-                            <Link to="/" className="btn btn-primary m-1 shadow-sm">Back To All Blogs</Link>
+                        <div className="card-body">
+                            <div className="text-center mb-5">
+                                {blogs.image_url && <img src={blogs.image_url} />}
+                            </div>
+                            <div className="col">
+                                <div className="card overflow-auto" style={{ maxHeight: '302px' }}>
+                                    <ReactMarkdown source={blogs.content} />
+                                </div>
+                            </div>
+                            <p className="text-muted text-center mt-3">{moment(blogs.created_at).format('MMM Do YYYY')}</p>
+                            <p className="text-monospace badge badge-pill badge-success shadow" >{blogs.tag_name}</p>
+                            <div className="d-flex justify-content-center">
+                                <Link to="/" className="btn btn-primary m-1 shadow-sm">Back To All Blogs</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 }

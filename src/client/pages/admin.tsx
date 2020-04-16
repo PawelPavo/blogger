@@ -34,26 +34,31 @@ const Admin: React.FC<AdminProps> = () => {
             console.log(error)
         }
     }
-    
+
     return (
-        <section className="row justify-content-center my-4">
-            <article className="col-md-8">
-            <h2 className="row mt-3 justify-content-center">Admin Options</h2>
-                <ul className="list-group mt-5 rounded">
-                    {blogs.map(blog => (
-                        <li key={`blog-${blog.id}`} className="list-group-item d-flex align-items-center justify-content-between m-3 shadow-sm">
-                            <span>{blog.image_url && <img src={blog.image_url} className="img-thumbnail" width="75" height="75" />}</span>
-                            <span>{blog.title}</span>
-                            <div>
-                                <Link to={`/${blog.id}/edit`} className="btn btn-warning btn-small mx-1">Edit</Link>
-                                <button
-                                    onClick={() => deleteBlog(blog.id)} className="btn btn-danger btn-small mx-1">X</button>
+        <div className="container">
+            <h1 className="text-center text-primary" >Admin Options</h1>
+            <div className="list-group">
+                {blogs.map(blog => (
+                    <div key={`blog-${blog.id}`} className="list-group-item list-group-item-action">
+                        <div className="row align-items-center">
+                            <div className="col-8">
+                                <h5>{blog.title}</h5>
                             </div>
-                        </li>
-                    ))}
-                </ul>
-            </article>
-        </section>
+                            <div className="col-4">
+                                <span>{blog.image_url && <img src={blog.image_url} className="img-thumbnail" width="75" height="75" />}</span>
+                            </div>
+                        </div>
+                        <div className="btn-group" role="group">
+                            <button type="button" className="btn btn-secondary">
+                                <Link className="text-warning" to={`/${blog.id}/edit`}>Edit</Link>
+                            </button>
+                            <button onClick={() => deleteBlog(blog.id)} type="button" className="btn btn-outline-secondary btn-sm text-danger">Delete</button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }
 

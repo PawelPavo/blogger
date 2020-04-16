@@ -1,23 +1,26 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom'
-import { FaFeather } from 'react-icons/fa'
-
-
+import { NavLink, useLocation } from 'react-router-dom'
+import { getPathText } from '../utils/pathing';
 
 export interface NavbarProps {
 }
 
 const Navbar: React.SFC<NavbarProps> = () => {
+
+    const { pathname } = useLocation()
+
+    const navbarText = getPathText(pathname)
+
     return (
         <>
-            <ul className="d-flex justify-content-between shadow-lg sticky-top bg-white">
-                <h4 className="text-monospace m-3">Welcome to my Blog</h4>
-                <div className="">
-                    <Link className="btn btn-primary m-3" to="/new"><FaFeather /> New Blog</Link>
-                    <Link className="btn btn-outline-primary m-3" to="/"> All Blogs</Link>
-                    <Link className="btn btn-danger m-3" to="/admin" >Admin</Link>
+            <nav className="nav p-2 mb-3 shadow justify-content-between align-items-center">
+                <span className="navbar-brand">{navbarText}</span>
+                <div className="d-flex justify-content-center align-items-center">
+                    <NavLink className="mx-2 text-decoration-none" activeClassName="text-warning border-bottom border-warning" exact to="/">Home</NavLink>
+                    <NavLink className="mx-2 text-decoration-none" activeClassName="text-warning border-bottom border-warning" exact to="/new">New Blog</NavLink>
+                    <NavLink className="mx-2 text-decoration-none" activeClassName="text-warning border-bottom border-warning" exact to="/admin">Admin</NavLink>
                 </div>
-            </ul>
+            </nav>
         </>
     );
 }

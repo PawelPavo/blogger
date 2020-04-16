@@ -47,7 +47,7 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
                             'https://i.picsum.photos/id/201/200/200.jpg',
                             'https://i.picsum.photos/id/266/200/200.jpg',
                             'https://i.picsum.photos/id/370/200/200.jpg',
-                            'https://i.picsum.photos/id/445/200/200.jpg'
+                            'https://i.picsum.photos/id/445/200/200.jpg',
                         ])
                 })
             });
@@ -58,11 +58,11 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
     }
 
     return (
-        <div className="container justify-contnet-center">
-            <section className="row mt-5">
-                <div className="col-md-10">
-                    <form className="form-group p-3 border border-primary shadow text-center">
-                        <h1 className="mb-5 text-primary">New Blog</h1>
+        <div className="container-fluid">
+            <section className="row mt-5 justify-content-center">
+                <div className="col-md-12">
+                    <form className="form-group p-3 border border-primary shadow">
+                        <h1 className="mb-3 text-primary text-center">New Blog</h1>
                         <input className="form-control mb-5" type="text" placeholder="Enter title ..."
                             value={title}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
@@ -76,25 +76,27 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
                             ))}
                         </select>
                         <div className="row form-group mt-5">
-                            <div className="col-6">
-                                <textarea className="form-control" rows={8} placeholder="Enter text ..."
+                            <div className="col-md-6">
+                                <textarea className="form-control" rows={12} placeholder="Enter text ..."
                                     value={content}
                                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
                                 ></textarea>
-                                <small className="text-muted">*Markdown is supported</small>
                             </div>
-                            <div className="col-6">
-                                <div className="align-text">
-                                    <div className="card shadow">
-                                        <div className="card-header" >
-                                            <ReactMarkdown source={content} />
-                                        </div>
-                                    </div>
+                            <div className="col-md-6 d-none d-sm-block d-print-block">
+                                <div className="card shadow overflow-auto" style={{ maxHeight: '302px' }}>
+                                    <ReactMarkdown source={content} />
                                 </div>
-                                <small className="text-muted">*Markdown preview</small>
                             </div>
                         </div>
-                        <button onClick={handleClick} type="button" className="btn btn-outline-primary btn-lg btn-block mt-5">Create New Blog</button>
+                        <div className="row form-group">
+                            <div className="col-md-6 text-muted text-center">
+                                <small>*Markdown is supported</small>
+                            </div>
+                            <div className="col-md-6 text-muted text-center">
+                                <small className="d-none d-sm-block d-print-block">*Markdown Preview</small>
+                            </div>
+                        </div>
+                        <button onClick={handleClick} type="button" className="btn btn-outline-primary btn-lg btn-block mt-3">Create New Blog</button>
                     </form>
                 </div>
             </section>

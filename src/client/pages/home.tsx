@@ -25,8 +25,9 @@ const Home: React.SFC<HomeProps> = () => {
 
     return (
         <div className="container">
+             <h1 className="text-center text-primary mt-5" >All Blogs</h1>
             <div>
-                <section className="row mt-5">
+                <section className="row mt-3">
                     {blogs.map(blog => (
                         <BlogCard key={`blog-${blog.id}`} blog={blog} />
                     ))}

@@ -27,7 +27,6 @@ const Edit: React.SFC<EditProps> = props => {
             try {
                 let res = await fetch(`/api/blogs/${blogid}`);
                 let blog = await res.json()
-                console.log(res)
                 setBlog(blog)
                 setTitle(blog.title);
                 setContent(blog.content);

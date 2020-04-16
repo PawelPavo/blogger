@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './pages/home'
-import Navbar from './components/navBar'
-import NewBlog from './pages/newBlog'
-import Details from './pages/blogDetails'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
+import NewBlog from './pages/NewBlog'
+import Details from './pages/Details'
 import Admin from './pages/admin'
-import Edit from './pages/editBlog'
+import Edit from './pages/Edit'
 
 const App: React.SFC<AppProps> = () => {
 	

@@ -29,9 +29,9 @@ const BlogDetailsCard: React.SFC<BlogDetailsCardProps> = ({ blogs }) => {
                                 </div>
                             </div>
                             <p className="text-muted text-center mt-3">{moment(blogs.created_at).format('MMM Do YYYY')}</p>
-                            <p className="text-monospace badge badge-pill badge-success shadow" >{blogs.tag_name}</p>
+                            <p className="text-monospace badge badge-pill badge-secondary shadow" >{blogs.tag_name}</p>
                             <div className="d-flex justify-content-center">
-                                <Link to="/" className="btn btn-primary m-1 shadow-sm">Back To All Blogs</Link>
+                                <Link to="/" className="btn btn-outline-info m-1 shadow-sm">Back To All Blogs</Link>
                             </div>
                         </div>
                     </div>

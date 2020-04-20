@@ -9,16 +9,16 @@ const BlogCard: React.SFC<BlogCardProps> = props => {
         <>
             <div className="col-md-4 my-3">
                 <div className="card shadow">
-                    {props.blog.image_url &&<img src={props.blog.image_url} className="card-img-top" alt="..." />}
-                    <h4 className="card-header text-center text-primary"> {props.blog.title}</h4>
+                    {props.blog.image_url &&<img src={props.blog.image_url} className="card-img-top" alt="Image Broken"/>}
+                    <h4 className="card-header text-center text-info"> {props.blog.title}</h4>
                     <div className="card-body">
                         <p className="card-title">By: {props.blog.name}</p>
-                        <span className="badge badge-primary badge-pill">{props.blog.tag_name}</span>
+                        <span className="badge badge-secondary badge-pill">{props.blog.tag_name}</span>
                     </div>
 
                     <div className="card-footer">
                         <div className="mt-3 text-center">
-                            <Link className="btn btn-outline-primary btn-sm" to={`${props.blog.id}/details`}><FaEdit /> View Blog</Link>
+                            <Link className="btn btn-outline-info btn-sm" to={`${props.blog.id}/details`}><FaEdit /> View Blog</Link>
                         </div>
                     </div>
                 </div>

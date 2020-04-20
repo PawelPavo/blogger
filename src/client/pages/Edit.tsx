@@ -58,12 +58,14 @@ const Edit: React.SFC<EditProps> = props => {
     return (
         <section className="row mt-5 justify-content-center">
             <div className="col-md-10">
-                <form className="form-group p-3 border border-primary shadow text-center">
-                    <h1 className="mb-5 text-primary">Edit Blog</h1>
-                    <input className="form-control mb-5" type="text" placeholder="Enter title ..."
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
+                <form className="form-group p-3 border border-info shadow">
+                    <h1 className="mb-5 text-info text-center">Edit Blog</h1>
+                    <div className="text-muted"> <small className="">Blog Title</small>
+                        <input className="form-control mb-5" type="text"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                    </div>
                     {/* <select className="form-control"
                         value={blog.tag_name}
                         onChange={null}>
@@ -72,14 +74,14 @@ const Edit: React.SFC<EditProps> = props => {
                             <option key={tag.id} value={tag.id}>{tag.name}</option>
                         ))}
                     </select> */}
-                    <div className="form-group mt-5">
-                        <textarea className="form-control" rows={8} placeholder="Enter your blog ..."
+                    <div className="form-group mt-5 text-muted"><small className="">Blog Text</small>
+                        <textarea className="form-control" rows={8}
                             value={content}
                             onChange={e => setContent(e.target.value)}
                         ></textarea>
                     </div>
                     <small className="text-muted">*Markdown is supported</small>
-                    <button onClick={handleClick} type="button" className="btn btn-outline-primary btn-lg btn-block mt-5">Submit Changes</button>
+                    <button onClick={handleClick} type="button" className="btn btn-outline-info btn-lg btn-block mt-5">Submit Changes</button>
                 </form>
             </div>
         </section>

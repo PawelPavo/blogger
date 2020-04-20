@@ -35,7 +35,9 @@ const Details: React.SFC<DetailsProps> = props => {
 
     return (
         <div className="container">
+            <div className="mt-5">
                 <BlogDetailsCard blogs={blog} />
+            </div>
         </div>
     )
 

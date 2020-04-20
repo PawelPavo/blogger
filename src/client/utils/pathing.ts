@@ -1,10 +1,11 @@
+
 export const getPathText = (pathname: string): string => {
-    
-    if(pathname.includes('/details')){
+
+    if (pathname.includes('/details')) {
         pathname = '/details';
     }
 
-    if(pathname.includes('/edit')){
+    if (pathname.includes('/edit')) {
         pathname = '/edit';
     }
 
@@ -12,15 +13,14 @@ export const getPathText = (pathname: string): string => {
         case '/':
             return 'Home';
         case '/new':
-            return 'New Blog';
+            return 'New';
         case '/admin':
             return 'Admin';
         case '/details':
             return 'Blog Details'
-            case '/edit':
-                return 'Blog Edit'
+        case '/edit':
+            return 'Edit'
         default:
             return '';
     }
-
 }

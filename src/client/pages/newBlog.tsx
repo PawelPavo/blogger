@@ -61,8 +61,8 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
         <div className="container-fluid">
             <section className="row mt-5 justify-content-center">
                 <div className="col-md-12">
-                    <form className="form-group p-3 border border-primary shadow">
-                        <h1 className="mb-3 text-primary text-center">New Blog</h1>
+                    <form className="form-group p-3 border border-info shadow">
+                        <h1 className="mb-3 text-info text-center">New Blog</h1>
                         <input className="form-control mb-5" type="text" placeholder="Enter title ..."
                             value={title}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
@@ -77,7 +77,7 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
                         </select>
                         <div className="row form-group mt-5">
                             <div className="col-md-6">
-                                <textarea className="form-control" rows={12} placeholder="Enter text ..."
+                                <textarea className="form-control shadow" rows={12} placeholder="Enter text ..."
                                     value={content}
                                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
                                 ></textarea>
@@ -96,7 +96,7 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
                                 <small className="d-none d-sm-block d-print-block">*Markdown Preview</small>
                             </div>
                         </div>
-                        <button onClick={handleClick} type="button" className="btn btn-outline-primary btn-lg btn-block mt-3">Create New Blog</button>
+                        <button onClick={handleClick} type="button" className="btn btn-outline-info btn-lg btn-block mt-3">Create New Blog</button>
                     </form>
                 </div>
             </section>

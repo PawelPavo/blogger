@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as moment from 'moment';
 import { Link } from 'react-router-dom';
 import { IBlogs } from '../utils/interfaces';
-import ReactMarkdown from 'react-markdown';;
+import ReactMarkdown from 'react-markdown';
+import 'github-markdown-css'
 
 
 export interface BlogDetailsCardProps {
@@ -25,7 +26,9 @@ const BlogDetailsCard: React.SFC<BlogDetailsCardProps> = ({ blogs }) => {
                             </div>
                             <div className="col">
                                 <div className="card overflow-auto" style={{ maxHeight: '302px' }}>
-                                    <ReactMarkdown source={blogs.content} />
+                                    <div className="markdown-body">
+                                        <ReactMarkdown source={blogs.content}/>
+                                    </div>
                                 </div>
                             </div>
                             <p className="text-muted text-center mt-3">{moment(blogs.created_at).format('MMM Do YYYY')}</p>
@@ -36,7 +39,7 @@ const BlogDetailsCard: React.SFC<BlogDetailsCardProps> = ({ blogs }) => {
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }

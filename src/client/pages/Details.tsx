@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { IBlogs } from '../utils/interfaces';
 import BlogDetailsCard from '../components/blogDetailsCard'
+import 'github-markdown-css'
 
 export interface DetailsProps extends RouteComponentProps<{ id: string }> { }
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { ITags } from '../utils/interfaces';
 import { RouteComponentProps } from 'react-router';
 import ReactMarkdown from 'react-markdown';
+import 'github-markdown-css'
 
 
 export interface NewBlogProps extends RouteComponentProps { };
@@ -84,7 +85,9 @@ const NewBlog: React.SFC<NewBlogProps> = props => {
                             </div>
                             <div className="col-md-6 d-none d-sm-block d-print-block">
                                 <div className="card shadow overflow-auto" style={{ maxHeight: '302px' }}>
-                                    <ReactMarkdown source={content} />
+                                    <div className="markdown-body">
+                                        <ReactMarkdown source={content} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

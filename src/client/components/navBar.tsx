@@ -15,9 +15,11 @@ const Navbar: React.SFC<NavbarProps> = () => {
     return (
         <>
             <nav className="nav p-2 mb-3 shadow justify-content-between align-items-center bg-info">
-                <span className="d-none d-sm-block d-print-block " ><img src={MyBlog} alt="logo" width="75" height="75" /><span className="text-light">  There is no place like code.</span>
-                </span>
 
+                <span className="d-none d-sm-block d-print-block ">
+                    <NavLink to="/"><img src={MyBlog} alt="logo" width="75" height="75" /></NavLink>
+                    <span className="text-light">  There is no place like code.</span>
+                </span>
                 <h4 className="text-white display">{navbarText}</h4>
 
                 <div className="d-flex justify-content-center align-items-center">
